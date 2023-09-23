@@ -37,7 +37,7 @@ We'll then retrieve our saved stock data using `pandas`'s `read_csv` function an
     df.date = df.timestamp.map(parse_date_from_timestamp)
     df.timestamp = df.timestamp.map(parse_time_from_timestamp)
 
-We'll `def`ine a `candlestick_plot_function` function to group the data into `numpy` `arrays` and then plot the data as candlesticks using a combination of `BoxStyle`, `FancyBboxPatch`, and `Line2D` `from` `matplotlib`:
+We'll `def`ine a `candlestick_plot_function` to group the data into `numpy` `arrays` and then plot the data as candlesticks using a combination of `BoxStyle`, `FancyBboxPatch`, and `Line2D` `from` `matplotlib`:
 
     import numpy as np
     from matplotlib import pyplot as plt
