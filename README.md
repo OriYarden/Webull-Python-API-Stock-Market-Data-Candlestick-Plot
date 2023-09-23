@@ -9,7 +9,7 @@ To `import` and `login` Webull (plugin your email and account password):
     wb = webull()
     wb.login('my@email.com', 'password')
 
-To obtain stock data, we'll use the `get_bars` functio and specifying the stock's symbol, timeframe, and number of samples (i.e. `stock`, `interval`, and `count`) and save it as a `DataFrame` using `pandas`'s `to_csv` function:
+To obtain stock data, we'll use the `get_bars` function and specify the stock's symbol, timeframe, and number of samples (i.e. `stock`, `interval`, and `count`) and save it as a `DataFrame` using `pandas`'s `to_csv` function:
 
     stock_symbol = 'SPY'
     stock_data = wb.get_bars(stock=stock_symbol, interval='m1', count=390, extendTrading=0)
