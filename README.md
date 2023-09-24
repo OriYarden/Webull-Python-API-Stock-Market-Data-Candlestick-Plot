@@ -57,7 +57,7 @@ We'll `def`ine a `candlestick_plot_function` to group the data into `numpy` `arr
     
         y = np.zeros((calc_num_candlesticks(df, candlestick_size_in_minutes), 4)).astype(float)
         box_width = calc_box_width(y.shape[0])
-
+    
         ax.set_facecolor([0, 0, 0.35])
         ax.grid(which='major', axis='both', color=[1, 1, 1], linewidth=0.5, zorder=0)
         for candlestick in range(y.shape[0]):
@@ -70,12 +70,11 @@ We'll `def`ine a `candlestick_plot_function` to group the data into `numpy` `arr
             top_of_box = np.max([y[candlestick, 0], y[candlestick, 3]])
             bottom_of_box = np.min([y[candlestick, 0], y[candlestick, 3]])
             box_color = np.array([0.0, 0.8, 0.6941]) if y[candlestick, 0] < y[candlestick, 3] else np.array([1.0, 0.0, 0.0])
-            plot_candlestick = FancyBboxPatch(xy=(candlestick - box_width*0.5, bottom_of_box), width=box_width, height=top_of_box - bottom_of_box, facecolor=box_color, edgecolor=box_color, boxstyle=BoxStyle('round', pad=fancy_box_padding), zorder=2)
     
             ax.add_line(Line2D(xdata=(candlestick, candlestick), ydata=(y[candlestick, 2], bottom_of_box), color=box_color, linewidth=wick_linewidth, antialiased=True, zorder=2))
             ax.add_line(Line2D(xdata=(candlestick, candlestick), ydata=(y[candlestick, 1], bottom_of_box), color=box_color, linewidth=wick_linewidth, antialiased=True, zorder=2))
-            ax.add_patch(plot_candlestick)
-
+            ax.add_patch(FancyBboxPatch(xy=(candlestick - box_width*0.5, bottom_of_box), width=box_width, height=top_of_box - bottom_of_box, facecolor=box_color, edgecolor=box_color, boxstyle=BoxStyle('round', pad=fancy_box_padding), zorder=2))
+    
         ax.set_ylim(np.min(y) - 0.1*(np.max(y) - np.min(y)), np.max(y) + 0.1*(np.max(y) - np.min(y)))
         ax.set_xlim(-0.1*y.shape[0], y.shape[0] + 0.1*y.shape[0])
         ax.set_title(f'''
@@ -95,6 +94,7 @@ We'll `def`ine a `candlestick_plot_function` to group the data into `numpy` `arr
     ax = plt.subplot(1, 1, 1)
     candlestick_plot_function(fig, ax, df, stock_symbol)
     plt.show()
+
 
 Which creates a 30-minute candlesticks plot:
 
