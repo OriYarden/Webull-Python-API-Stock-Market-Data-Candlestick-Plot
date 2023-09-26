@@ -34,8 +34,8 @@ We'll then retrieve our saved stock data using `pandas`'s `read_csv` function an
             return timestamp if int(timestamp[:2]) <= 12 else '0' + str(int(timestamp[:2]) - 12) + timestamp[2:]
         return correct_timestamps(timestamp[timestamp.find(' ') + 1:timestamp.find('-4:') - 5])
     
-    df.date = df.timestamp.map(parse_date_from_timestamp)
-    df.timestamp = df.timestamp.map(parse_time_from_timestamp)
+    df['date'] = df.timestamp.map(parse_date_from_timestamp)
+    df['timestamp'] = df.timestamp.map(parse_time_from_timestamp)
 
 We'll `def`ine a `candlestick_plot_function` to group the data into `numpy` `arrays` and then plot the data as candlesticks using a combination of `BoxStyle`, `FancyBboxPatch`, and `Line2D` `from` `matplotlib`:
 
