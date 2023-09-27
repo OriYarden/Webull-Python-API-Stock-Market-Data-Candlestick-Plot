@@ -14,7 +14,7 @@ To obtain stock data, we'll use the `get_bars` function and specify the stock's 
     stock_symbol = 'SPY'
     stock_data = wb.get_bars(stock=stock_symbol, interval='m1', count=390, extendTrading=0)
 
-    _date = '2023-09-22'
+    _date = '2023-09-26'
     file_name = f'/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/DATA_FRAMES/{stock_symbol}_{_date}.csv'
     import pandas as pd
     stock_data.to_csv(file_name)
@@ -98,16 +98,17 @@ We'll `def`ine a `candlestick_plot_function` to group the data into `numpy` `arr
 
 Which creates a 30-minute candlesticks plot:
 
-![image](https://github.com/OriYarden/Webull-Python-API-Stock-Market-Data-Candlestick-Plot/assets/137197657/3a211deb-93d8-4b6c-a5f0-a155a33020de)
+![image](https://github.com/OriYarden/Webull-Python-API-Stock-Market-Data-Candlestick-Plot/assets/137197657/8de61b45-b5fd-43ad-810b-de800d044085)
 
-We can also adjust the `candlestick_size_in_minutes` parameter to plot different timeframes; for example 5-minute candlesticks:
+
+We can also adjust the `candlestick_size_in_minutes` parameter to plot different timeframes; for example 10-minute candlesticks:
 
     fig = plt.figure(figsize=(5, 5))
     ax = plt.subplot(1, 1, 1)
-    candlestick_plot_function(fig, ax, df, stock_symbol, candlestick_size_in_minutes=5, wick_linewidth=0.75)
+    candlestick_plot_function(fig, ax, df, stock_symbol, candlestick_size_in_minutes=10, wick_linewidth=1.0)
     plt.show()
 
-![image](https://github.com/OriYarden/Webull-Python-API-Stock-Market-Data-Candlestick-Plot/assets/137197657/07f014a8-a88f-4474-ba24-d507ce629aef)
+![image](https://github.com/OriYarden/Webull-Python-API-Stock-Market-Data-Candlestick-Plot/assets/137197657/6e5ceabe-94d9-420d-8cff-31043268ff43)
 
 
 or 60-minute candlesticks:
@@ -118,5 +119,7 @@ or 60-minute candlesticks:
     plt.show()
 
 
-![image](https://github.com/OriYarden/Webull-Python-API-Stock-Market-Data-Candlestick-Plot/assets/137197657/1524f528-9fa0-45aa-9935-97df6734d343)
+![image](https://github.com/OriYarden/Webull-Python-API-Stock-Market-Data-Candlestick-Plot/assets/137197657/d859c8b2-5db5-48aa-b13f-1b21e99ce86e)
+
+
 
