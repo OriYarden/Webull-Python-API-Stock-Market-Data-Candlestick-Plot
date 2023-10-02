@@ -264,7 +264,7 @@ Altogether we have:
     stock_symbol = 'SPY'
     _date = '2023-09-27'
     
-    file_name = "/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/DATA_FRAMES/" + stock_symbol + '_' + _date + '.csv'
+    file_name = f'/content/drive/My Drive/Colab Notebooks/DATA_FOLDERS/DATA_FRAMES/{stock_symbol}_{_date}.csv'
     
     import pandas as pd
     df = pd.read_csv(file_name)
